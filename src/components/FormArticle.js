@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 
-class CreateArticle extends Component {
+class FormArticle extends Component {
   state = { value: '' };
 
   handleChange(event) {
     this.setState({ value: event.target.value });
+  }
+
+  handleCriarNovoArticle() {
+    this.props.criarNovoArticle(this.state.value);
+    this.setState({ value: '' });
   }
 
   render() {
@@ -18,11 +23,9 @@ class CreateArticle extends Component {
             onChange={(event) => this.handleChange(event)}
           />
         </label>
-        <button onClick={() => this.props.criarNovoArticle(this.state.value)}>
-          enviar
-        </button>
+        <button onClick={() => this.handleCriarNovoArticle()}>enviar</button>
       </div>
     );
   }
 }
-export default CreateArticle;
+export default FormArticle;
