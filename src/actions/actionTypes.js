@@ -1,0 +1,1 @@
+export const CLICK_BUTTON_ADD_NEW = 'CLICK_BUTTON_ADD_NEW';
