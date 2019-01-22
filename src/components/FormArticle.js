@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+import { clickButtonAddNewArticle } from '../actions';
+import { connect } from 'react-redux';
+
 class FormArticle extends Component {
   state = { value: '' };
 
@@ -8,7 +11,11 @@ class FormArticle extends Component {
   }
 
   handleCriarNovoArticle() {
-    this.props.criarNovoArticle(this.state.value);
+    let concatArticles = this.props.articles.concat({
+      title: this.state.value,
+      id: Date.now()
+    });
+    this.props.clickButtonAddNewArticle(concatArticles);
     this.setState({ value: '' });
   }
 
@@ -28,4 +35,14 @@ class FormArticle extends Component {
     );
   }
 }
-export default FormArticle;
+
+const mapStateToProps = (store) => {
+  return {
+    articles: store.articlesReducer.articles
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { clickButtonAddNewArticle }
+)(FormArticle);

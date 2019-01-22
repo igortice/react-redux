@@ -15,15 +15,12 @@ export const articlesReducer = (state = INITIAL_STATE, action) => {
     case ADD_NEW_ARTICLE:
       return {
         ...state,
-        articles: state.articles.concat({
-          title: action.payload,
-          id: Date.now()
-        })
+        articles: action.articles
       };
     case REMOVE_ARTICLE:
       return {
         ...state,
-        articles: state.articles.filter((item) => item.id !== action.payload)
+        articles: action.articles
       };
     default:
       return state;

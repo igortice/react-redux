@@ -1,14 +1,34 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const ListArticles = (props) => (
-  <ul>
-    {props.articles.map((el) => (
-      <li key={el.id}>
-        {el.title} |{' '}
-        <button onClick={() => props.removeArticle(el.id)}>x</button>
-      </li>
-    ))}
-  </ul>
-);
+import { clickButtonRemoveArticle } from '../actions';
+import { connect } from 'react-redux';
 
-export default ListArticles;
+class ListArticles extends Component {
+  handlerRemoverArticle(id) {
+    let articlesFiltered = this.props.articles.filter((item) => item.id !== id);
+    this.props.clickButtonRemoveArticle(articlesFiltered);
+  }
+
+  render() {
+    return (
+      <ul>
+        {this.props.articles.map((el) => (
+          <li key={el.id}>
+            {el.title} |{' '}
+            <button onClick={() => this.handlerRemoverArticle(el.id)}>x</button>
+          </li>
+        ))}
+      </ul>
+    );
+  }
+}
+
+const mapStateToProps = (store) => {
+  return {
+    articles: store.articlesReducer.articles
+  };
+};
+export default connect(
+  mapStateToProps,
+  { clickButtonRemoveArticle }
+)(ListArticles);
