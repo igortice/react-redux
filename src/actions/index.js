@@ -1,6 +1,11 @@
-import { CLICK_BUTTON_ADD_NEW } from './actionTypes';
+import { ADD_NEW_ARTICLE, REMOVE_ARTICLE } from './actionTypes';
 
-export const clickButtonAddNew = (value) => ({
-  type: CLICK_BUTTON_ADD_NEW,
-  newValue: value
+export const clickButtonAddNewArticle = (texto) => ({
+  type: ADD_NEW_ARTICLE,
+  payload: texto
+});
+
+export const clickButtonRemoveArticle = (id) => ({
+  type: REMOVE_ARTICLE,
+  payload: id
 });

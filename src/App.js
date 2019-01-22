@@ -1,46 +1,41 @@
 import React, { Component } from 'react';
-import ListArticles from './components/ListArticles';
+import { clickButtonAddNewArticle, clickButtonRemoveArticle } from './actions';
+
 import CreateArticle from './components/CreateArticle';
+import ListArticles from './components/ListArticles';
+import { connect } from 'react-redux';
 
 class App extends Component {
-  state = {
-    articles: [
-      { title: 'React Redux Tutorial for Beginners', id: Date.now() },
-      {
-        title: "Redux e React: cos'è Redux e come usarlo con React",
-        id: Date.now() + 1
-      }
-    ]
-  };
-
-  addArticle(title) {
-    if (title.trim() !== '') {
-      this.setState({
-        articles: this.state.articles.concat({
-          title: title,
-          id: Date.now()
-        })
-      });
-    }
-  }
-
-  removeArticle(id) {
-    let filteredArray = this.state.articles.filter((item) => item.id !== id);
-    this.setState({ articles: filteredArray });
-  }
 
   render() {
-    const { articles } = this.state;
+    const {
+      articles,
+      clickButtonAddNewArticle,
+      clickButtonRemoveArticle
+    } = this.props;
+
     return (
       <div>
-        <CreateArticle criarNovoArticle={(title) => this.addArticle(title)} />
+        <CreateArticle
+          criarNovoArticle={(title) => clickButtonAddNewArticle(title)}
+        />
+
         <ListArticles
           articles={articles}
-          removeArticle={(id) => this.removeArticle(id)}
+          removeArticle={(id) => clickButtonRemoveArticle(id)}
         />
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = (store) => {
+  return {
+    articles: store.articlesReducer.articles
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { clickButtonAddNewArticle, clickButtonRemoveArticle }
+)(App);
