@@ -28,6 +28,7 @@ const mapStateToProps = (store) => {
     articles: store.articlesReducer.articles
   };
 };
+
 export default connect(
   mapStateToProps,
   { clickButtonRemoveArticle }

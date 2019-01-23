@@ -1,8 +1,8 @@
-import React from 'react';
 import FormArticle from './FormArticle';
+import React from 'react';
 
-const CreateArticle = (props) => (
-  <FormArticle criarNovoArticle={props.criarNovoArticle} />
+const CreateArticle = () => (
+  <FormArticle />
 );
 
 export default CreateArticle;

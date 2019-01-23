@@ -1,18 +1,13 @@
-import React, { Component } from 'react';
-
 import CreateArticle from './components/CreateArticle';
 import ListArticles from './components/ListArticles';
+import React from 'react';
 
-class App extends Component {
-  render() {
-    return (
-      <div>
-        <CreateArticle />
+const App = () => (
+  <div>
+    <CreateArticle />
 
-        <ListArticles />
-      </div>
-    );
-  }
-}
+    <ListArticles />
+  </div>
+);
 
 export default App;
