@@ -1,5 +1,6 @@
-import FormArticle from './FormArticle';
 import React from 'react';
+
+import FormArticle from './FormArticle';
 
 const CreateArticle = () => (
   <FormArticle />

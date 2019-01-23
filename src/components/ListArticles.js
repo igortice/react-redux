@@ -1,7 +1,7 @@
+import { connect } from 'react-redux';
 import React, { Component } from 'react';
 
 import { clickButtonRemoveArticle } from '../actions';
-import { connect } from 'react-redux';
 
 class ListArticles extends Component {
   handlerRemoverArticle(id) {

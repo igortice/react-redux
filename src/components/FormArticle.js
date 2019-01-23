@@ -1,7 +1,7 @@
+import { connect } from 'react-redux';
 import React, { Component } from 'react';
 
 import { clickButtonAddNewArticle } from '../actions';
-import { connect } from 'react-redux';
 
 class FormArticle extends Component {
   state = { value: '' };
